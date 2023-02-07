@@ -13,11 +13,10 @@
       width: 100%;
       height: 650px;
       background-image: 
-        linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
-        url('./assets/pexels-alexandr-podvalny-1227513.jpeg');
+        linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3) ),
+        url('../assets/sebastian.jpg');
       background-repeat: no-repeat;
-      background-size: 170% 170%;
-      background-position: top 95% right 50%;
+      background-size: cover;
       
       &__content {
         width: 100%;
@@ -39,7 +38,7 @@
           text-align: center;
           color: #FFFFFF;
         }
-        .Button {
+        Button {
           margin-top: 32px;
         }
       }
@@ -63,23 +62,16 @@
         margin-top: 50px;
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 29px;
         padding: 0 16px;
         .Card {
           flex: 1 1 30%;
-        }
-        .preloader {
-          width: 48px;
-          height: 48px;
-          animation: spin 2s linear infinite;
-          text-align: center;
-        }
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+          border-radius: 50%;
         }
       }
-      .Button {
+
+      Button {
         margin-top: 50px;
       }
     }
@@ -96,14 +88,27 @@
           color: rgba(0, 0, 0, 0.87);
           text-align: center;
         }
-        img {
+        .success_img {
           margin-top: 50px;
           margin-bottom: 100px;
         }
       }
     }
   }
+
+  .preloader {
+    width: 48px;
+    height: 48px;
+    animation: spin 2s linear infinite;
+    text-align: start;
+    margin: 50px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 }
+
 
 @media (max-width:1170px){
   .App {

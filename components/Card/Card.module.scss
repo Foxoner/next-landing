@@ -1,6 +1,7 @@
 .Card {
     height: 254px;
     min-width: 328px;
+    max-width: 29%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -43,13 +44,3 @@
 
 }
 
-.tooltip {
-    min-width: 200px;
-    background: rgba(0, 0, 0, 0.87);
-    border-radius: 4px;
-    padding: 3px 16px;
-    font-size: 16px;
-    line-height: 26px;
-    color: #FFFFFF;
-    text-align: center;
-}

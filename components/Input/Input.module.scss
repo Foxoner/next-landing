@@ -13,7 +13,8 @@
         padding: 14px 16px;
         color: rgba(0, 0, 0, 0.87);
     }
-    input:invalid {
+   
+    input:focus:invalid{
         background: #F8F8F8;
         border: 2px solid #CB3D40;
         outline: none;
@@ -41,6 +42,15 @@
         padding: 0 4px;
         background-color: #F8F8F8;
     }
+    // 
+    input:valid ~ span  {
+        color: #7E7E7E;
+        transform: translateX(12px) translateY(-14px);
+        font-size: 12px;
+        padding: 0 4px;
+        background-color: #F8F8F8;
+    }
+    //
     input:focus:invalid ~ span  {
         color: #CB3D40;
         transform: translateX(12px) translateY(-14px);
@@ -58,7 +68,7 @@
         color: #7E7E7E;
         letter-spacing: -1px;
     }
-    input:invalid ~ p {
+    input:focus:invalid ~ p {
         position: relative;
         top: 4px;
         left: 16px;
@@ -67,8 +77,6 @@
         line-height: 14px;
         color: #CB3D40;
     }
-
-
 }
 
 @media (max-width:650px) {
