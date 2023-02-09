@@ -22,7 +22,7 @@ function Index({ users }) {
     if (localStorage.getItem('newUsers') == null) {
       localStorage.setItem('newUsers', '[]')
     } 
-    if (localStorage.getItem('newUsers') != '[]') {
+    if (localStorage.getItem('newUsers') !== '[]') {
       setMainUsers(JSON.parse(localStorage.getItem('newUsers')))
     }
   },[])
