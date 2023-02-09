@@ -36,7 +36,7 @@ function Card( {user} ) {
                 <img className={styles.Card__img} src={user.photo} alt='user-img' />
                 <p className={styles.Card__name} onMouseOver={tooltipMouseOver} onMouseOut={tooltipMouseOut} tip={user.name}>{user.name}</p>
                 <div className={styles.Card__desc}>
-                    <p onMouseOver={tooltipMouseOver} onMouseOut={tooltipMouseOut} tip={user.position} >{user.position}</p>
+                    <p onMouseOver={tooltipMouseOver} onMouseOut={tooltipMouseOut} tip={user.position_id} >{user.position_id}</p>
                     <p onMouseOver={tooltipMouseOver} onMouseOut={tooltipMouseOut} tip={user.email} >{user.email}</p>
                     <p onMouseOver={tooltipMouseOver} onMouseOut={tooltipMouseOut} tip={user.phone} >{user.phone}</p>
                     

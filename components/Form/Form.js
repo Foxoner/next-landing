@@ -22,6 +22,13 @@ function Form({ checkForm }) {
             .catch(err => console.log(err))
     },[])
 
+    const fileToLink = (file) => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+    })
+
     async function onInputImageChange() {
         let userImage = document.querySelector('input[type="file"]');
         setUploadFile(userImage.files[0].name);
@@ -40,7 +47,8 @@ function Form({ checkForm }) {
             userImgName.classList.remove('valid', 'invalid');
             userImgName.classList.add('valid');
             document.querySelector('[class*=form-wrapper__file-input-helper]').textContent = '';
-            setUserData({...userData, photo: userImage.files[0]});
+            // setUserData({...userData, photo: userImage.files[0]});
+            setUserData({...userData, photo: await fileToLink(userImage.files[0])});
         } else {
             label.classList.add('label-invalid');
             userImgName.classList.remove('valid', 'invalid');
@@ -59,35 +67,20 @@ function Form({ checkForm }) {
         if (validation.length) {
             return
         } else {
-            console.log(userData)
             formData.append('name', userData.name); 
             formData.append('email', userData.email); 
             formData.append('phone', userData.phone); 
             formData.append('position_id', userData.position_id); 
             formData.append('photo', userData.photo);
-            console.log(formData.get('photo'))
-            fetch('https://frontend-test-assignment-api.abz.agency/api/v1/token') 
-            .then(res => res.json()) 
-            .then(data => {
-                fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', { method: 'POST', body: formData, headers: { 'Token': data.token } }) 
-                .then(res => res.json()) 
-                .then(data => {  
-                    if(data.success) { 
-                        checkForm(data.success)
-                    } else {
-                        console.log(data)
-                    } 
-                }) 
-                .catch(err =>  console.log(err));
-            }) 
-            .catch(err => console.log(err));
+               
+            checkForm(userData)
         }   
     }
 
 
     return(
             <div className={styles.Form}>
-                <h1>Working with POST request</h1>
+                <h1>Register Now</h1>
                 <div className={styles['form-wrapper']}>
                     <div className={styles['form-wrapper__input-item']}>
                         <Input name='user-name' onChange={(e) => setUserData({...userData, name: e.target.value})} label={'Your name'} helper={''} type='text' required minLength='2' maxLength='60'/>
@@ -106,7 +99,7 @@ function Form({ checkForm }) {
                             <div>
                                 {positions.map( item => 
                                     <div className={styles['form-wrapper__radio-btn']} key={item.id}>
-                                        <input onChange={(e) => setUserData({...userData, position_id: item.id})} type="radio" id={item.id} name="position" value={item.name} required />
+                                        <input onChange={(e) => setUserData({...userData, position_id: item.name})} type="radio" id={item.id} name="position" value={item.name} required />
                                         <label htmlFor={item.id}>{item.name}</label>
                                     </div>
                                 )}

@@ -1,10 +1,13 @@
 .Header {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     background: #FFFFFF;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
     .header__content {
         width: 1170px;
         display: flex;

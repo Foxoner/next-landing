@@ -3,6 +3,7 @@
 /.env
 /.idea
 /.next
+/.source
 
 # dependencies
 /node_modules
